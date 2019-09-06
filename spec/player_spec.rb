@@ -2,6 +2,7 @@ require 'player'
 
 describe Player do
   let(:name) { double :name }
+  subject(:game) { Game.new}
   subject(:player) { described_class.new(name)}
 
   let(:karlo) { Player.new('karlo') }
@@ -11,24 +12,17 @@ describe Player do
     it 'returns its name' do
       expect(subject.name).to eq(name)
     end
-  end 
+  end
 
   describe '#hp' do
     it 'returns its hp' do
       expect(mike.hp).to eq described_class::DEFAULT_HP
     end
-  end 
-
-  describe '#attack' do
-    it 'attacks the player' do
-      expect(karlo).to receive(:reduce_hp)
-      mike.inflict_damage(karlo)
-    end
   end
 
   describe '#reduce_hp' do
     it 'receives damage' do
-      expect { karlo.inflict_damage(mike) }.to change { mike.hp }.by(-10)
+      expect { game.inflict_damage(mike) }.to change { mike.hp }.by(-10)
     end
-  end 
+  end
 end

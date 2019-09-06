@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
 
@@ -24,7 +25,7 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    $player1.inflict_damage($player2)
+    Game.new.inflict_damage($player2)
     @player1 = $player1.name
     @player2 = $player2.name
     @hp1 =  $player1.hp
