@@ -2,7 +2,7 @@ require 'player'
 
 describe Player do
   let(:name) { double :name }
-  subject(:game) { Game.new}
+  subject(:game) { Game.new(karlo, mike)}
   subject(:player) { described_class.new(name)}
 
   let(:karlo) { Player.new('karlo') }
