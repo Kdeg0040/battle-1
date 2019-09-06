@@ -26,7 +26,12 @@ class Battle < Sinatra::Base
     @game = $game
     @game.inflict_damage(@game.opponent)
     @game.switch_turns
+    redirect to('/lose') if @game.game_over?
     erb(:attack)
+  end
+
+  get '/lose' do
+    erb(:lose)
   end
 
   run! if app_file == $0

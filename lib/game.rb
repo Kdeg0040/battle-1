@@ -24,6 +24,10 @@ class Game
     @current_turn = opponent_of(current_turn)
   end
 
+  def game_over?
+    player_1.hp == 0 || player_2.hp == 0
+  end
+
   private
 
   def opponent_of(the_player)
